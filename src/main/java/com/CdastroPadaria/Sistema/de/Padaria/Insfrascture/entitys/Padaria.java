@@ -2,6 +2,7 @@ package com.CdastroPadaria.Sistema.de.Padaria.Insfrascture.entitys;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
 @Setter
@@ -9,15 +10,12 @@ import lombok.*;
 @NoArgsConstructor
 @Entity
 @Builder
-@Table(name = "tb_padaria")
+@Document(collection = "padaria")
 public class Padaria {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column(name = "produtos")
+    private String id;
     private String produtos;
-    @Column(name = "valor")
     private Double valor;
 
 

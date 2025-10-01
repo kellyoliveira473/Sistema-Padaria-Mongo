@@ -2,6 +2,7 @@ package com.CdastroPadaria.Sistema.de.Padaria.Insfrascture.entitys;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -13,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "tb_compra")
+@Document(collection = "compra")
 public class Compra {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
