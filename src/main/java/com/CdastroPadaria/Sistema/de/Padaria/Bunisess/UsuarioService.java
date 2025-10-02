@@ -13,8 +13,8 @@ public class UsuarioService {
     public UsuarioService(UsuarioReposity reposity) {
         this.reposity = reposity;
     }
-    public void salvarUsuario(Usuario usuario){
-        reposity.save(usuario);
+    public Usuario salvarUsuario(Usuario usuario){
+       return reposity.save(usuario);
     }
     public Usuario buscarPorCpf(String cpf){
         return reposity.findByCpf(cpf)
@@ -24,20 +24,21 @@ public class UsuarioService {
         reposity.deleteBycpf(cpf);
     }
     public Usuario atualizarPorCpf(String cpf ,Usuario usuario){
-        Usuario usuarioEntities =  reposity.findByCpf(cpf)
-                .orElseThrow(()-> new RuntimeException("Usuario nao encontrado "));
-        Usuario usuarioAtual = usuario.builder()
-                .nome(usuario.getNome() != null ? usuario.getNome() : usuarioEntities.getNome())
-                .telefone(usuario.getTelefone()!= null ? usuario.getTelefone(): usuarioEntities.getTelefone())
-                .email(usuario.getEmail()!= null ? usuario.getEmail(): usuarioEntities.getEmail())
-                .datanascimento(usuario.getDatanascimento()!= null ? usuario.getDatanascimento(): usuarioEntities.getDatanascimento())
-                .cpf(usuarioEntities.getCpf())
-                .build();
-        return usuarioAtual;
+            Usuario usuarioEntity=reposity.findById(cpf).orElseThrow(()->new RuntimeException("Usuario nao Encontrado"));
 
+            if (usuario.getNome() != null) {
+                usuarioEntity.setNome(usuario.getNome());
+            }
+            if (usuario.getTelefone() != null) {
+                usuarioEntity.setTelefone(usuario.getTelefone());
+            }
 
+            if (usuario.getDatanascimento() != null) {
+            usuarioEntity.setDatanascimento(usuario.getDatanascimento());
+            }
 
-
+            return reposity.save(usuarioEntity);
+        }
 
 }
-    }
+

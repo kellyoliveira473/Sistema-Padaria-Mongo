@@ -16,9 +16,10 @@ public class CompraController {
     public CompraController(CompraService compraService) {
         this.compraService = compraService;
     }
-    @PostMapping
-    public ResponseEntity<Compra > CriarCompra(@RequestBody CompraDTO dto) {
-        Compra novaCompra=compraService.criarCompraComDTO(dto);
-        return ResponseEntity.ok(novaCompra);
+
+    @PutMapping("/{id}")
+    public Compra atualizar(@RequestBody Compra compra, @PathVariable String id){
+        return compraService.criarCompraComDTO(id, compra);
     }
+
 }

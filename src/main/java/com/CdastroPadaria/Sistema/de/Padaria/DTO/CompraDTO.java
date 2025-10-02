@@ -6,7 +6,7 @@ import java.util.List;
 
 @Data
 public class CompraDTO {
-    private Long usuarioid;
-    private List<Long>produtosIds;
+    private String usuarioid;
+    private List<String>produtosIds;
 
 }

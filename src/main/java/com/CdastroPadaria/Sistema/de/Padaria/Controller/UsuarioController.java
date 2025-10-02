@@ -1,41 +1,40 @@
 package com.CdastroPadaria.Sistema.de.Padaria.Controller;
 
+import com.CdastroPadaria.Sistema.de.Padaria.Bunisess.PadariaService;
 import com.CdastroPadaria.Sistema.de.Padaria.Bunisess.UsuarioService;
+import com.CdastroPadaria.Sistema.de.Padaria.Insfrascture.entitys.Padaria;
 import com.CdastroPadaria.Sistema.de.Padaria.Insfrascture.entitys.Usuario;
-import com.fasterxml.jackson.databind.ser.std.UUIDSerializer;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-
 @RestController
 @RequestMapping("/usuario")
 public class UsuarioController {
-    private final UsuarioService service;
     private final UsuarioService usuarioService;
 
-    public UsuarioController(UsuarioService service, UsuarioService usuarioService) {
-        this.service = service;
+
+
+
+    public UsuarioController(UsuarioService usuarioService) {
         this.usuarioService = usuarioService;
     }
+
     @PostMapping
-    public ResponseEntity<Void>salvarUusario( @RequestBody Usuario usuario){
-        return ResponseEntity.ok().build();
+    public Usuario cadastrar(@RequestBody Usuario usuario) {
+        return usuarioService.salvarUsuario(usuario);
     }
 
-    @GetMapping
-    public ResponseEntity<Usuario>buscarUsuarioPorCpf(@RequestParam String cpf){
-        return ResponseEntity.ok(usuarioService.buscarPorCpf(cpf));
+    @GetMapping("/{id}")
+    public Usuario BuscarPorId(@PathVariable String cpf) {
+        return usuarioService.buscarPorCpf(cpf);
     }
-    @DeleteMapping
-    public ResponseEntity<Void>deletarUsuarioPorCpf(@RequestParam String cpf){
+
+    @DeleteMapping("/{id}")
+    public void deletar(@PathVariable String cpf) {
         usuarioService.deletarPorCpf(cpf);
-        return ResponseEntity.ok().build();
     }
-    @PutMapping
-    public ResponseEntity<Void>atualizarUsuario(@RequestBody Usuario usuario){
-        return ResponseEntity.ok().build();
+    @PutMapping("/{id}")
+    public Usuario atualizar(@RequestBody Usuario usuario, @PathVariable String id){
+        return usuarioService.atualizarPorCpf(id,usuario);
     }
-
-
 }
+
+

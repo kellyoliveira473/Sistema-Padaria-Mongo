@@ -1,7 +1,6 @@
 package com.CdastroPadaria.Sistema.de.Padaria.Insfrascture.repository;
 
 import com.CdastroPadaria.Sistema.de.Padaria.Insfrascture.entitys.Usuario;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.transaction.annotation.Transactional;
 

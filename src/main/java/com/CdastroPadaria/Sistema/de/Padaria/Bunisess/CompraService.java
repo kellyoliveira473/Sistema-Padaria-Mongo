@@ -9,7 +9,6 @@ import com.CdastroPadaria.Sistema.de.Padaria.Insfrascture.repository.PadariaRepo
 import com.CdastroPadaria.Sistema.de.Padaria.Insfrascture.repository.UsuarioReposity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -17,25 +16,26 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class CompraService {
+
     private final UsuarioReposity usuarioReposity;
+    private final CompraRepository compraRepository;
+    private final UsuarioService usuarioService;
+    private final PadariaRepository padariaRepository;
 
     private Double calcularValorTotal(List<Padaria> produtos) {
         return produtos.stream()
                 .mapToDouble(Padaria::getValor)
                 .sum();
-
     }
-    private final CompraRepository compraRepository;
-    private final UsuarioService usuarioService;
-    private final PadariaRepository padariaRepository;
+
     public Compra criarCompraComDTO(CompraDTO dto) {
-        Usuario usuario= usuarioReposity.findById(dto.getUsuarioid())
+        Usuario usuario = usuarioReposity.findById(dto.getUsuarioid())
                 .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
         List<Padaria> produtos = padariaRepository.findAllById(dto.getProdutosIds());
 
         Compra compra = Compra.builder()
-                .usuario(usuario)
-                .produtos(produtos)
+                .usuarioId(usuario.getId())
+                .produtosIds(dto.getProdutosIds())
                 .dataCompra(LocalDateTime.now())
                 .valorTotal(calcularValorTotal(produtos))
                 .build();
@@ -43,4 +43,9 @@ public class CompraService {
         return compraRepository.save(compra);
     }
 
+
+    public Compra criarCompraComDTO(String id, Compra compra) {
+        compra.setId(id);
+        return compraRepository.save(compra);
+    }
 }

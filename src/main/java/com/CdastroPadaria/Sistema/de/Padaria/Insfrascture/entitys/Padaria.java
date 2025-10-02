@@ -1,14 +1,14 @@
 package com.CdastroPadaria.Sistema.de.Padaria.Insfrascture.entitys;
 
-import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
+
 @Builder
 @Document(collection = "padaria")
 public class Padaria {

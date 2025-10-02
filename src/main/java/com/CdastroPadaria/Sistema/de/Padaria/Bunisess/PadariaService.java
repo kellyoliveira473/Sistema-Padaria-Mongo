@@ -12,32 +12,30 @@ public class PadariaService {
     public PadariaService(PadariaRepository repository) {
         this.repository = repository;
     }
-    public void  CadastrProduto(Padaria padaria){
-        repository.saveAndFlush(padaria);
+    public Padaria  CadastrProduto(Padaria padaria){
+         return repository.save(padaria);
 
     }
-    public Padaria BuscaPadariaPorId(Long id){
+    public Padaria BuscaPadariaPorId(String id){
         return repository.findById(id).orElseThrow(
                 ()->new RuntimeException("Produto nao encontrado ")
         );
     }
-    public void  deletarProdutoPorId(Long id){
+    public void  deletarProdutoPorId(String id){
         repository.deleteById(id);
 
     }
-    public void AtualizaProdutoPorid(Long id, Padaria padaria){
+    public Padaria AtualizaProdutoPorid(String id, Padaria padaria){
         Padaria produtoEntity = repository.findById(id).orElseThrow(
                 ()->new RuntimeException("Produto nao encontrado ")
         );
-        Padaria produtoAtualizado = padaria.builder()
-                .id(padaria.getId()!=null ? padaria.getId() :
-                        produtoEntity.getId())
-                .produtos(padaria.getProdutos()!=null ? padaria.getProdutos():
-                        produtoEntity.getProdutos())
-                .valor(padaria.getValor()!= null ? padaria.getValor():
-                        produtoEntity.getValor())
-                .build();
-        repository.saveAndFlush(produtoAtualizado);
+        if (padaria.getProdutos() != null) {
+            produtoEntity.setProdutos(padaria.getProdutos());
+        }
+        if (padaria.getValor() != null) {
+            padaria.setValor(padaria.getValor());
+        }
+        return repository.save(padaria);
 
     }
 

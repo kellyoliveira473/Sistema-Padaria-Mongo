@@ -2,37 +2,37 @@ package com.CdastroPadaria.Sistema.de.Padaria.Controller;
 
 import com.CdastroPadaria.Sistema.de.Padaria.Bunisess.PadariaService;
 import com.CdastroPadaria.Sistema.de.Padaria.Insfrascture.entitys.Padaria;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/padaria")
 public class PadariaController {
     private final PadariaService padariaService;
-    private PadariaService service;
+
 
     public PadariaController(PadariaService padariaService) {
         this.padariaService = padariaService;
     }
 
     @PostMapping
-    public ResponseEntity<Void>CadastrarProduto(@RequestBody Padaria padaria){
-        padariaService.CadastrProduto(padaria);
-        return ResponseEntity.ok().build();
+    public Padaria cadastrar(@RequestBody Padaria padaria) {
+        return padariaService.CadastrProduto(padaria);
     }
-    @GetMapping
-    public ResponseEntity<Padaria>BuscarProdutoPorId(@RequestParam Long id){
-      return ResponseEntity.ok(padariaService.BuscaPadariaPorId(id));
 
+    @GetMapping("/{id}")
+    public Padaria BuscarPorId(@PathVariable String id) {
+        return padariaService.BuscaPadariaPorId(id);
     }
-    @DeleteMapping
-    public ResponseEntity<Void>ExcluirProduto(@RequestParam Long id){
+
+    @DeleteMapping("/{id}")
+    public void deletar(@PathVariable String id) {
         padariaService.deletarProdutoPorId(id);
-        return ResponseEntity.ok().build();
     }
     @PutMapping("/{id}")
-    public ResponseEntity<Void>AtualizarProduto(@RequestParam Long id, @RequestBody Padaria padaria){
-        padariaService.AtualizaProdutoPorid(id, padaria);
-        return ResponseEntity.ok().build();
+    public Padaria atualizar(@RequestBody Padaria padaria, @PathVariable String id){
+        return padariaService.AtualizaProdutoPorid(id,padaria);
     }
 }

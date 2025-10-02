@@ -1,11 +1,10 @@
 package com.CdastroPadaria.Sistema.de.Padaria.Insfrascture.entitys;
 
-import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -13,27 +12,19 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Entity
 @Document(collection = "compra")
 public class Compra {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    @ManyToOne
-    @JoinColumn(name = "usuario_id")
-    private Usuario usuario;
-    @ManyToMany
-    @JoinTable(
-            name = "tb_compra_produto",
-            joinColumns = @JoinColumn(name = "compra_id"),
-            inverseJoinColumns = @JoinColumn(name = "padaria_id")
-    )
-    private List<Padaria>produtos;
-    @Column(name = "data_compra")
+    private String id;
+
+    // Armazenando apenas o ID do usuário
+    private String usuarioId;
+
+    // Lista de IDs dos produtos (padarias)
+    private List<String> produtosIds;
+
     private LocalDateTime dataCompra;
-    @Column(name = "valor_total")
+
     private Double valorTotal;
-
-
-
 }
