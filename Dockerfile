@@ -17,8 +17,9 @@ RUN echo "Compilando e empacotando a aplicação..." && \
 
 # ----------------------------------------------------------------------
 # Estágio 2: EXECUÇÃO - Imagem leve final JRE 21
+# AGORA USANDO: 21-jre-alpine (imagem mínima e estável)
 # ----------------------------------------------------------------------
-FROM eclipse-temurin:21-jre-focal
+FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 EXPOSE 8080
 
