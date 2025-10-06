@@ -88,16 +88,8 @@ Para executar os testes automatizados:
 
 ./mvnw test
 
-🧱 Estrutura do Projeto
-├── .mvn/                # Wrapper do Maven
-├── src/                 # Código-fonte da aplicação
-│   ├── main/
-│   │   ├── java/        # Código Java principal
-│   │   └── resources/   # Arquivos de configuração
-├── .gitignore           # Arquivos ignorados pelo Git
-├── Dockerfile           # Configuração para criação da imagem Docker
-├── mvnw / mvnw.cmd      # Executáveis do Maven Wrapper
-└── pom.xml              # Arquivo de configuração do Maven
+<img width="1024" height="1024" alt="Estrutura de Diretórios do Projeto" src="https://github.com/user-attachments/assets/4fcef1dd-8c11-4132-a874-5c6fd04baefa" />
+
 
 
 📄 Licença
