@@ -1,28 +1,41 @@
-Sistema Padaria Mongo
+🥐 Sistema Padaria Mongo
 
-Sistema de gerenciamento para padarias utilizando MongoDB, desenvolvido em Java com Spring Boot.
+O Sistema Padaria Mongo é um projeto criado para facilitar o gerenciamento de padarias e estabelecimentos similares.
+O objetivo principal é oferecer uma solução moderna e simples para controlar produtos, pedidos, clientes e estoque, tornando o dia a dia do negócio mais prático e organizado.
+
+Este sistema foi desenvolvido pensando tanto em donos de padarias que buscam automatizar seus processos, quanto em profissionais de tecnologia interessados em conhecer uma aplicação completa com Spring Boot e MongoDB.
+Com ele, é possível visualizar, cadastrar e gerenciar informações de forma rápida, utilizando uma interface moderna e um banco de dados eficiente.
+
+
+
+
+🎯 Objetivo do Projeto
+
+O projeto tem como finalidade demonstrar uma aplicação Java integrada com MongoDB, explorando boas práticas de programação, arquitetura de software e utilização de contêineres Docker.
+Além disso, o sistema serve como base de aprendizado para estudantes e desenvolvedores que desejam entender na prática como funciona o desenvolvimento de um sistema web completo com Java + Spring Boot + NoSQL.
 
 🚀 Tecnologias Utilizadas
 
-Java: Linguagem de programação principal.
+Java 17+ → Linguagem de programação principal.
 
-Spring Boot: Framework para construção de aplicações Java.
+Spring Boot → Framework que simplifica a criação de aplicações Java modernas e escaláveis.
 
-MongoDB: Banco de dados NoSQL utilizado para armazenamento de dados.
+MongoDB → Banco de dados NoSQL utilizado para armazenar e consultar os dados da aplicação.
 
-Maven: Gerenciador de dependências e automação de builds.
+Maven → Ferramenta para gerenciamento de dependências e automação de builds.
 
-Docker: Contêineres para facilitar o desenvolvimento e implantação.
+Docker → Plataforma de contêineres que facilita o empacotamento e execução da aplicação em diferentes ambientes.
+
 
 
 👩‍💻 Autora
 
-Kelly Oliveira
-
+ Gleice Kelly Oliveira
+ 
 
 📦 Pré-requisitos
 
-Antes de rodar o projeto, certifique-se de ter as seguintes ferramentas instaladas:
+Antes de rodar o projeto, certifique-se de ter instalado:
 
 Java 17 ou superior
 
@@ -30,10 +43,10 @@ Maven
 
 Docker
 
-MongoDB
- (ou utilize o Docker para rodar o MongoDB)
+MongoDB (ou execute via Docker)
 
-📥 Como Rodar o Projeto
+
+⚙️ Como Executar o Projeto
 
 Clone este repositório:
 
@@ -41,14 +54,16 @@ git clone https://github.com/kellyoliveira473/Sistema-Padaria-Mongo.git
 cd Sistema-Padaria-Mongo
 
 
+
 Compile o projeto:
 
 ./mvnw clean install
 
 
-Inicie o MongoDB (caso não tenha o MongoDB instalado localmente, você pode utilizar o Docker):
+Inicie o MongoDB com Docker (caso não tenha o Mongo instalado localmente):
 
 docker run --name mongodb -d -p 27017:27017 mongo
+
 
 
 Execute a aplicação:
@@ -56,32 +71,51 @@ Execute a aplicação:
 ./mvnw spring-boot:run
 
 
-A aplicação estará disponível em http://localhost:8080
-.
+
+A aplicação ficará disponível em:
+👉 http://localhost:8080
 
 🔧 Endpoints Disponíveis
 
-Observação: Os endpoints exatos não estão documentados no repositório. Recomenda-se verificar o código-fonte para detalhes sobre os endpoints disponíveis.
+Os endpoints (rotas da API) estão definidos no código-fonte da aplicação.
+Para visualizá-los, consulte as classes dentro do pacote controller no diretório src/main/java.
+
+
 
 🧪 Testes
 
-Para rodar os testes automatizados:
+Para executar os testes automatizados:
 
 ./mvnw test
 
-🧱 Estrutura de Pastas
-├── .mvn/              # Wrapper do Maven
-├── src/               # Código-fonte da aplicação
+🧱 Estrutura do Projeto
+├── .mvn/                # Wrapper do Maven
+├── src/                 # Código-fonte da aplicação
 │   ├── main/
-│   │   ├── java/      # Código Java
-│   │   └── resources/ # Arquivos de configuração
-├── .gitignore         # Arquivos a serem ignorados pelo Git
-├── Dockerfile         # Arquivo para construção da imagem Docker
-├── mvnw               # Wrapper do Maven para Linux/Mac
-├── mvnw.cmd           # Wrapper do Maven para Windows
-└── pom.xml            # Arquivo de configuração do Maven
+│   │   ├── java/        # Código Java principal
+│   │   └── resources/   # Arquivos de configuração
+├── .gitignore           # Arquivos ignorados pelo Git
+├── Dockerfile           # Configuração para criação da imagem Docker
+├── mvnw / mvnw.cmd      # Executáveis do Maven Wrapper
+└── pom.xml              # Arquivo de configuração do Maven
+
 
 📄 Licença
 
-Este projeto está licenciado sob a Licença MIT - veja o arquivo LICENSE
- para detalhes.
+Este projeto está licenciado sob a Licença MIT — veja o arquivo LICENSE para mais detalhes.
+
+
+🧠 Termos Técnicos e Conclusão Profissional
+
+O Sistema Padaria Mongo aplica conceitos fundamentais de arquitetura de software moderna, como:
+
+Injeção de Dependência (Dependency Injection)
+
+Camadas de Serviço e Repositório
+
+Persistência de Dados NoSQL
+
+Integração Contínua e Contêinerização com Docker
+
+Trata-se de um projeto que une simplicidade funcional com robustez técnica, sendo ideal tanto para fins acadêmicos quanto empresariais.
+Através deste sistema, é possível compreender a aplicação prática de padrões de desenvolvimento Java em conjunto com tecnologias atuais do ecossistema Spring e MongoDB.
