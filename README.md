@@ -30,7 +30,7 @@ Docker → Plataforma de contêineres que facilita o empacotamento e execução 
 
 👩‍💻 Autora
 
- Gleice Kelly Oliveira
+ Gleice Kelly Oliveira ,Raquel Fernandes, Jucelaine Teles, Guilherme Soares
  
 
 📦 Pré-requisitos
